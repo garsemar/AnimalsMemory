@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Animals Memory</string>
+    <string name="selected_item">Selected item:</string>
+
+    <string-array name="Difficulty">
+        <item>Select difficulty</item>
+        <item>Normal</item>
+        <item>Hard</item>
+    </string-array>
 </resources>

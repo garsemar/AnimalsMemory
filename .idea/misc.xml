@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout/activity_main.xml" value="0.22" />
-        <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout/game.xml" value="0.33" />
+        <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/drawable/splash_background.xml" value="0.112" />
+        <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout-land/activity_main.xml" value="0.30158730158730157" />
+        <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout/activity_main.xml" value="0.21" />
+        <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout/game.xml" value="0.2" />
         <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout/launcher.xml" value="0.33" />
         <entry key="../../../../../../dades/Maquines/AnimalsMemory/app/src/main/res/layout/results.xml" value="0.21693840579710144" />
       </map>
