@@ -10,7 +10,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="92dp"
+        android:layout_height="86dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -19,7 +19,7 @@
             android:layout_width="263dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="70dp"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="25dp"
             android:gravity="center"
             android:text="00:00"
             android:textSize="34sp" />
@@ -38,57 +38,53 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="141dp"
+        android:layout_height="72dp"
         android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="241dp"
+            android:layout_height="62dp"
+            app:srcCompat="@drawable/_1z_x7ojlvl" />
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="241dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/_1z_x7ojlvl" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="241dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/_1z_x7ojlvl" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="85dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/imageView9"
+            android:layout_width="241dp"
+            android:layout_height="62dp"
+            app:srcCompat="@drawable/_1z_x7ojlvl" />
+
+        <ImageView
+            android:id="@+id/imageView10"
+            android:layout_width="241dp"
+            android:layout_height="62dp"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/_1z_x7ojlvl" />
 
         <ImageView
             android:id="@+id/imageView11"
-            android:layout_width="213dp"
-            android:layout_height="114dp"
-            app:srcCompat="@drawable/_1z_x7ojlvl" />
-
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="162dp"
-            android:layout_height="114dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/_1z_x7ojlvl" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="146dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView16"
-            android:layout_width="213dp"
-            android:layout_height="116dp"
-            app:srcCompat="@drawable/_1z_x7ojlvl" />
-
-        <ImageView
-            android:id="@+id/imageView17"
-            android:layout_width="182dp"
-            android:layout_height="116dp"
-            android:layout_weight="1"
-            app:srcCompat="@drawable/_1z_x7ojlvl" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="145dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/imageView18"
-            android:layout_width="213dp"
-            android:layout_height="116dp"
-            app:srcCompat="@drawable/_1z_x7ojlvl" />
-
-        <ImageView
-            android:id="@+id/imageView19"
-            android:layout_width="182dp"
-            android:layout_height="116dp"
+            android:layout_width="241dp"
+            android:layout_height="62dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/_1z_x7ojlvl" />
 
@@ -102,11 +98,5 @@
         android:gravity="center"
         android:text="Movements: 0"
         android:textSize="34sp" />
-
-    <Button
-        android:id="@+id/siguiente"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Button" />
 
 </LinearLayout>

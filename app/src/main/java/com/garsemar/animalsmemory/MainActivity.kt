@@ -18,30 +18,37 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, GameActivity::class.java)
         var selectedDiff: String? = null
 
-        val spinner = findViewById<Spinner>(R.id.difficulty)
-        if (spinner != null) {
-            val adapter = ArrayAdapter(
-                this,
-                android.R.layout.simple_spinner_item, difficulty
-            )
-            spinner.adapter = adapter
-        }
-        spinner.onItemSelectedListener = object :
-            AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                if(position != 0){
-                    selectedDiff = difficulty[position]
-                }
+        val spinner: Spinner = findViewById(R.id.difficulty)
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_item, difficulty
+        )
+        spinner.adapter = adapter
+
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                Toast.makeText(this@MainActivity, "Select something", Toast.LENGTH_SHORT)
+                    .show()
             }
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                Toast.makeText(this@MainActivity, "Select the difficulty", Toast.LENGTH_SHORT).show()
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                selectedDiff = if(position != 0){
+                    difficulty[position]
+                } else{
+                    null
+                }
             }
         }
         play.setOnClickListener {
-            if(selectedDiff == null){
-                Toast.makeText(this@MainActivity, "Select the difficulty", Toast.LENGTH_SHORT).show()
-            }
-            else{
+            if (selectedDiff == null) {
+                Toast.makeText(this@MainActivity, "Select the difficulty", Toast.LENGTH_SHORT)
+                    .show()
+            } else {
                 intent.putExtra("selectedDiff", selectedDiff)
                 startActivity(intent)
             }
