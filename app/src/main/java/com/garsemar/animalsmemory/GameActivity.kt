@@ -23,6 +23,7 @@ class GameActivity : AppCompatActivity() {
 
         sig.setOnClickListener{
             intent.putExtra("points", points)
+            intent.putExtra("selectedDiff", selectedDiff)
             startActivity(intent)
         }
     }
