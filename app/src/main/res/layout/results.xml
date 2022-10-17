@@ -7,32 +7,22 @@
     android:orientation="vertical"
     tools:context=".ResultsActivity">
 
-    <FrameLayout
-        android:layout_width="409dp"
-        android:layout_height="467dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="423dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/pointsText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
+            android:layout_marginTop="50dp"
             android:gravity="center"
-            android:text="Score:"
+            android:text="Score:\nX points"
             android:textSize="48sp" />
-
-        <TextView
-            android:id="@+id/textView5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="X points"
-            android:textSize="48sp" />
-
-    </FrameLayout>
+    </LinearLayout>
 
     <Button
         android:id="@+id/playAgain"
