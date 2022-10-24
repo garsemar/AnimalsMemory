@@ -1,14 +1,12 @@
 package com.garsemar.animalsmemory
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.LinearLayout
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import kotlin.random.Random
 
 class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -44,28 +42,37 @@ class GameActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
-    fun game(){
-        /*val images = listOf<ImageView>(
-            findViewById(R.id.imageView1),
-            findViewById(R.id.imageView2),
-            findViewById(R.id.imageView3),
-            findViewById(R.id.imageView4),
-            findViewById(R.id.imageView5),
-            findViewById(R.id.imageView6)
-        )*/
-        val pos = generateSequence { Random.nextInt(1,7) }.distinct().toList()
-        println(pos)
-        /*images[pos[0]].setImageResource(R.drawable.mono)
-        images[pos[1]].setImageResource(R.drawable.foca)
-        images[pos[2]].setImageResource(R.drawable.mono)
-        images[pos[3]].setImageResource(R.drawable.capybara)
-        images[pos[4]].setImageResource(R.drawable.foca)
-        images[pos[5]].setImageResource(R.drawable.capybara)*/
+    @SuppressLint("UseCompatLoadingForDrawables")
+    private fun game(){
+        val images = listOf<ImageView>(findViewById(R.id.imageView1), findViewById(R.id.imageView2), findViewById(R.id.imageView3), findViewById(R.id.imageView4), findViewById(R.id.imageView5), findViewById(R.id.imageView6))
+        val drawable = listOf(R.drawable.mono, R.drawable.capybara, R.drawable.foca)
+        val numList = randomNums()
+        val map = mapOf(
+            images[numList[0]] to drawable[0],
+            images[numList[1]] to drawable[1],
+            images[numList[2]] to drawable[2],
+            images[numList[3]] to drawable[0],
+            images[numList[4]] to drawable[1],
+            images[numList[5]] to drawable[2],
+        )
+        var num = 0
+        val selected = mutableListOf<Drawable>()
+        map.forEach { it ->
+            it.key.setOnClickListener { lis ->
+                if(it.key.drawable.constantState == resources.getDrawable( R.drawable._1z_x7ojlvl).constantState){
+                    it.key.setImageResource(it.value)
+                    //selected.add()
+                    num += 1
+                    if(num == 2){
 
-//        images.random()
-
-        /*images[0].setOnClickListener {
-            images.setImageResource(R.drawable.mono)
-        }*/
+                    }
+                }
+                else{
+                    it.key.setImageResource(R.drawable._1z_x7ojlvl)
+                }
+            }
+        }
     }
 }
+
+fun randomNums() = List(6){it}.shuffled()
