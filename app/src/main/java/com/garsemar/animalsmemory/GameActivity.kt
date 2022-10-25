@@ -4,9 +4,13 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import java.util.concurrent.TimeUnit
+import kotlin.math.sign
 
 class GameActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,24 +59,29 @@ class GameActivity : AppCompatActivity() {
             images[numList[4]] to drawable[1],
             images[numList[5]] to drawable[2],
         )
-        var num = 0
-        val selected = mutableListOf<Drawable>()
+        val selected = mutableListOf<Map.Entry<ImageView, Int>>()
         map.forEach { it ->
             it.key.setOnClickListener { lis ->
                 if(it.key.drawable.constantState == resources.getDrawable( R.drawable._1z_x7ojlvl).constantState){
                     it.key.setImageResource(it.value)
-                    //selected.add()
-                    num += 1
-                    if(num == 2){
-
+                    selected.add(it)
+                    if(selected.size == 2){
+                        if(selected[0].value != selected[1].value){
+                            Handler(Looper.getMainLooper()).postDelayed({
+                                selected[0].key.setImageResource(R.drawable._1z_x7ojlvl)
+                                selected[1].key.setImageResource(R.drawable._1z_x7ojlvl)
+                                selected.clear()
+                            }, 1000)
+                            TimeUnit.SECONDS.sleep(3)
+                        }
+                        else{
+                            Toast.makeText(this@GameActivity, "Nice", Toast.LENGTH_SHORT).show()
+                            selected.clear()
+                        }
                     }
-                }
-                else{
-                    it.key.setImageResource(R.drawable._1z_x7ojlvl)
                 }
             }
         }
     }
+    private fun randomNums() = List(6){it}.shuffled()
 }
-
-fun randomNums() = List(6){it}.shuffled()
