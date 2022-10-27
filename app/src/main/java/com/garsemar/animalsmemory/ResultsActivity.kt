@@ -16,7 +16,7 @@ class ResultsActivity : AppCompatActivity() {
         setContentView(R.layout.results)
 
         val bundle: Bundle? = intent.extras
-        val points = bundle?.getString("points")
+        val points = bundle?.getInt("points")
         val selectedDiff = bundle?.getString("selectedDiff")
 
         val intentPlay = Intent(this, GameActivity::class.java)
@@ -35,7 +35,5 @@ class ResultsActivity : AppCompatActivity() {
         menu.setOnClickListener {
             startActivity(intentMenu)
         }
-
-        Toast.makeText(this@ResultsActivity, points, Toast.LENGTH_SHORT).show()
     }
 }
