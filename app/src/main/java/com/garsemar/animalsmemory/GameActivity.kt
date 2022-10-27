@@ -1,10 +1,7 @@
 package com.garsemar.animalsmemory
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.os.*
 import android.os.SystemClock
 import android.view.View
 import android.widget.*
@@ -15,6 +12,7 @@ class GameActivity : AppCompatActivity() {
 
     lateinit var viewModel: GameViewModel
     lateinit var images: MutableList<ImageView>
+    lateinit var meter: Chronometer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_AnimalsMemory)
@@ -24,6 +22,7 @@ class GameActivity : AppCompatActivity() {
         val bundle: Bundle? = intent.extras
         val selectedDiff = bundle?.getString("selectedDiff")
         val hard = listOf<ImageView>(findViewById(R.id.imageView7), findViewById(R.id.imageView8))
+        meter = findViewById(R.id.c_meter)
 
         viewModel = ViewModelProvider(this).get(GameViewModel::class.java)
 
@@ -51,7 +50,9 @@ class GameActivity : AppCompatActivity() {
         for(i in images.indices){
             images[i].setOnClickListener{
                 rotate(i, images[i])
-                checkCard(i)
+                checkSame()
+                checkWin(selectedDiff!!, meter)
+                meter.start()
             }
         }
 
@@ -65,8 +66,37 @@ class GameActivity : AppCompatActivity() {
         }
     }
 
-    fun checkCard(id: Int){
+    private fun checkSame(){
+        if(viewModel.checkSame()) {
+            images.forEach {
+                it.isClickable = false
+            }
+        }
+        Handler(Looper.getMainLooper()).postDelayed({
+            updateUI()
+            images.forEach {
+                it.isClickable = true
+            }
+        }, 1000)
+    }
 
+    private fun checkWin(selectedDiff: String, meter: Chronometer){
+        val difficulty: Int = if(selectedDiff == "Normal"){
+            3
+        } else{
+            4
+        }
+        if(viewModel.checkWin(difficulty)){
+            meter.stop()
+            val intent = Intent(this, ResultsActivity::class.java)
+
+            val time = 12
+
+            val points = 1000/(time+5)
+            intent.putExtra("points", points.toInt())
+            intent.putExtra("selectedDiff", selectedDiff)
+            startActivity(intent)
+        }
     }
 
     private fun updateUI(){
@@ -76,7 +106,6 @@ class GameActivity : AppCompatActivity() {
     }
 
     /*private fun game(selectedDiff: String?){
-
         val drawable = listOf(R.drawable.mono, R.drawable.capybara, R.drawable.foca, R.drawable.lemur)
         lateinit var map: MutableMap<ImageView, Int>
         val move = findViewById<TextView>(R.id.textView9)

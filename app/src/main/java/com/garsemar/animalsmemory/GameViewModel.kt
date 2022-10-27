@@ -14,6 +14,8 @@ class GameViewModel: ViewModel() {
     )
 
     var cards = mutableListOf<Cards>()
+    var rotated = mutableListOf<Int>()
+    var win = mutableListOf<List<Int>>()
 
     init {
         drawable = drawable.shuffled()
@@ -27,6 +29,7 @@ class GameViewModel: ViewModel() {
         println(cards[id])
         if (!cards[id].rotated){
             cards[id].rotated = true
+            rotated.add(id)
             return cards[id].drawable
         }
         return null
@@ -37,5 +40,29 @@ class GameViewModel: ViewModel() {
             return cards[id].drawable
         }
         return R.drawable._1z_x7ojlvl
+    }
+
+    fun checkSame(): Boolean {
+        if(rotated.size == 2){
+            if(cards[rotated[0]].drawable == cards[rotated[1]].drawable){
+                win.add(rotated)
+            }
+            else{
+                rotated.forEach {
+                    cards[it].rotated = false
+                }
+                rotated.clear()
+                return true
+            }
+            rotated.clear()
+        }
+        return false
+    }
+
+    fun checkWin(difficulty: Int): Boolean {
+        if(win.size == difficulty){
+            return true
+        }
+        return false
     }
 }
