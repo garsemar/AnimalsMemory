@@ -1,10 +1,10 @@
 package com.garsemar.animalsmemory
 
-import android.widget.ImageView
+import android.widget.Chronometer
 import androidx.lifecycle.ViewModel
 
 class GameViewModel: ViewModel() {
-    var drawable = listOf(
+    var drawable = mutableListOf(
         R.drawable.mono,
         R.drawable.capybara,
         R.drawable.foca,
@@ -16,17 +16,21 @@ class GameViewModel: ViewModel() {
     var cards = mutableListOf<Cards>()
     var rotated = mutableListOf<Int>()
     var win = mutableListOf<List<Int>>()
+    var time: Long = 0
+    var movements = 0
 
-    init {
-        drawable = drawable.shuffled()
-        println(drawable)
+    fun init(selectedDiff: String){
+        if(selectedDiff == "Hard"){
+            drawable.add(R.drawable.lemur)
+            drawable.add(R.drawable.lemur)
+        }
+        drawable = drawable.shuffled().toMutableList()
         for (i in drawable.indices) {
             cards.add(Cards(i, drawable[i]))
         }
     }
 
     fun rotate(id: Int): Int? {
-        println(cards[id])
         if (!cards[id].rotated){
             cards[id].rotated = true
             rotated.add(id)
@@ -44,6 +48,7 @@ class GameViewModel: ViewModel() {
 
     fun checkSame(): Boolean {
         if(rotated.size == 2){
+            movements += 1
             if(cards[rotated[0]].drawable == cards[rotated[1]].drawable){
                 win.add(rotated)
             }
@@ -64,5 +69,15 @@ class GameViewModel: ViewModel() {
             return true
         }
         return false
+    }
+
+    fun saveTime(meter: Chronometer){
+        time = meter.base
+    }
+
+    fun setChrono(meter: Chronometer){
+        if(time.toInt() != 0){
+            meter.base = time
+        }
     }
 }

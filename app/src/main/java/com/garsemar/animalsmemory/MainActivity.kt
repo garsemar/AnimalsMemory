@@ -6,7 +6,6 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
-
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_AnimalsMemory)
@@ -46,8 +45,7 @@ class MainActivity : AppCompatActivity() {
         }
         play.setOnClickListener {
             if (selectedDiff == null) {
-                Toast.makeText(this@MainActivity, "Select the difficulty", Toast.LENGTH_SHORT)
-                    .show()
+                Toast.makeText(this@MainActivity, "Select the difficulty", Toast.LENGTH_SHORT).show()
             } else {
                 intent.putExtra("selectedDiff", selectedDiff)
                 startActivity(intent)
