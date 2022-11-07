@@ -18,6 +18,7 @@ class GameViewModel: ViewModel() {
     var win = mutableListOf<List<Int>>()
     var time: Long = 0
     var movements = 0
+    var paused = false
 
     fun init(selectedDiff: String){
         if(selectedDiff == "Hard"){

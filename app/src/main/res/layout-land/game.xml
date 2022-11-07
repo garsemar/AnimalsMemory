@@ -16,7 +16,7 @@
 
         <Chronometer
             android:id="@+id/c_meter"
-            android:layout_width="match_parent"
+            android:layout_width="575dp"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
             android:layout_marginStart="68dp"
@@ -24,6 +24,7 @@
             android:layout_marginEnd="68dp"
             android:layout_marginBottom="28dp"
             android:gravity="center"
+            android:paddingLeft="50dp"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textColor="#092FEC"
             android:textSize="36sp"
@@ -33,9 +34,9 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/floatingActionButton3"
-            android:layout_width="130dp"
-            android:layout_height="61dp"
+            android:id="@+id/pause"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_weight="1"
             android:clickable="true"
