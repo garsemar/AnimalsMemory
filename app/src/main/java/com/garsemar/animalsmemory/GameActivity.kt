@@ -95,7 +95,6 @@ class  GameActivity : AppCompatActivity() {
     }
 
     private fun resume(){
-        println("--------------------------resume-----------------------------")
         images.forEach { it.isClickable = true }
         meter.base = meter.base + SystemClock.elapsedRealtime() - time
         meter.start()
@@ -103,7 +102,6 @@ class  GameActivity : AppCompatActivity() {
     }
 
     private fun pause(){
-        println("--------------------------pause-----------------------------")
         images.forEach { it.isClickable = false }
         meter.stop()
         time = SystemClock.elapsedRealtime()
